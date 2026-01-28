@@ -133,3 +133,97 @@ RENAME is used to change the name of a table.
 ```sql
 RENAME TABLE tbl_employee TO employee;
 ```
+
+### truncate command 
+Truncate is used to remove or delete all data from tables 
+**note:** After truncate, data cannot be rolled back
+
+```
+Truncate table tablename
+```
+
+### DROP 
+used to delete database and table structures
+```
+drop database databasename
+```
+
+## drop a table:
+```
+drop table tablename
+```
+
+### DML (data manipulation language)
+DML is used to manioulate data; insert or delete or update data in a table
+
+1. insert data
+   ## single data insert
+   ```
+   insert into tablename (columnname) values('value')
+   ```
+   **query** 
+   insert into users (name, email, password)
+   values('viva', 'viva@gmail.com', 2345)
+
+   ## multiple data insert
+   ```
+   insert into tablename (columnname) values('value1'), ('value2'), ('value3')
+   ```
+
+   **query**
+   insert into users (name, email, password)
+   values('jolyn', 'jolyn@gmail.com', 2345), ('hiya', 'hiya@gmail.com, 3422)
+
+2. delete data
+   ## delete all data
+   ```
+   delete from users 
+   ```
+   ## delete particular data 
+   ```
+   delete from users where id=4
+   ```
+
+   ## delete a rannge of data
+   ```
+   delete from users where id between 1 and 3
+   ```
+
+   ## delete multiple data in random order
+
+   ```
+   delete from users where id in (3,4,8,9,13)
+   ```
+
+   3. update data
+   
+   ```
+   update users set name = 'preeti', email = 'preeti@gmail.com', password = '6565' where id=3
+   ```
+
+   ## DQL (Data query language)
+   is used to fetch data or select data from tables 
+
+   **select**
+
+   **select all data**
+
+   ```
+   select * from users
+   ```
+
+**select particular column**
+```
+select id, name from users
+```
+
+**select particular with id**
+```
+select * from users where id=1
+```
+
+**select particular between data**
+```
+select * from users where between 1 and 100
+```
+
