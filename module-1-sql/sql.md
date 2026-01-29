@@ -212,18 +212,97 @@ DML is used to manioulate data; insert or delete or update data in a table
    select * from users
    ```
 
-**select particular column**
-```
-select id, name from users
-```
+   **select particular column**
+   ```
+   select id, name from users
+   ```
 
-**select particular with id**
-```
-select * from users where id=1
-```
+   **select particular with id**
+   ```
+   select * from users where id=1
+   ```
 
-**select particular between data**
-```
-select * from users where between 1 and 100
-```
+   **select particular between data**
+   ```
+   select * from users where between 1 and 100
+   ```
+   
+   **select particular in operator data**
+   ```
+   select * from users where between id in(1,3)
+   ```
+   
+   **select particular data using limit**
+   ```
+   select * from users where between id limit 0,2
+   ```
 
+   **select particular data in asceding or descending order**
+   ```
+   select * from users order by name ASC
+   or 
+   select * from users order by name ASC
+   or
+   select * from users order by name (by default comes in asceding order)
+   ```
+
+   **searching for data starting with a particular character**
+   ```
+   searching data starting with 'p' character
+   select * from users where name like 'p%'
+
+   searching data ending with 'e' character
+   select * from users where name like '%e'
+
+   searching data ending or starting or anywhere in name with 'a' character
+   select * from users where name like '%a%'
+   ```
+
+   **sql function**
+   1. Aggrigate function 
+      **query**
+      1. count
+      2. sum
+      3. max
+      4. avg
+
+   2. Scalar function
+      **query**
+      1. first (first is not supported in mysql, it's supported in oracle)
+      2. last (first is not supported in mysql, it's supported in oracle)
+      3. lcase
+      4. ucase
+
+   
+   ## Aggrigate function queries
+
+   ```
+   select max(salary) as highest_salary from employee
+
+   select min(salary) as highest_salary from employee
+
+   select count(employee_id) as total_employees from employee
+
+   select sum(salary) as total_salary from employee
+
+   select avg(salary) as avg_salary from employee
+   ```
+
+   ## Scalar functions
+   ```
+   select first(employee_name) from employee
+
+   select last(employee_name) from employee
+
+   select ucase(employee_name) from employee
+
+   select lcase(employee_name) from employee
+   ```
+
+   **subquery in sql**
+
+   subquery means query within another query 
+   ```
+   select max(salary) as second_highest_salary from employee where salary < (select max(salary) from employee)
+   ```
+   
