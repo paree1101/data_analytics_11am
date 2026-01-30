@@ -1,4 +1,9 @@
-1. CREATE TABLE Contact(
+# SQL Assignment
+
+## Question 1: Create Contact Table
+
+```sql
+CREATE TABLE Contact(
     ContactID INT PRIMARY KEY AUTO_INCREMENT,
     CompanyID INT,
     FirstName VARCHAR(45),
@@ -10,9 +15,13 @@
     IsMain Boolean,
     Email VARCHAR(45),
     Phone VARCHAR(12)
-    );
+);
+```
 
-2. CREATE TABLE Employee(
+## Question 2: Create Employee Table
+
+```sql
+CREATE TABLE Employee(
     EmployeeID INT PRIMARY KEY AUTO_INCREMENT,
     FirstName VARCHAR(45),
     LastName VARCHAR(45),
@@ -21,35 +30,86 @@
     JobTitle VARCHAR(25),
     Email VARCHAR(45),
     Phone VARCHAR(12)
-    );
+);
+```
 
-3. CREATE TABLE ContactEmployee ( 
+## Question 3: Create ContactEmployee Table
+
+```sql
+CREATE TABLE ContactEmployee ( 
     ContactEmployeeID INT PRIMARY KEY AUTO_INCREMENT, 
     ContactID INT, 
     EmployeeID INT, 
     ContactDate Date, 
     Description VARCHAR(100) 
-    );
+);
+```
 
-4. UPDATE Employee SET phone = '2155558800' WHERE FirstName = 'Lesley' and LastName = 'Bland';
+## Question 4: Update Employee Phone Number
 
-5. UPDATE Company_tbl SET CompanyName = 'Urban Outfitters' WHERE CompanyName = 'Urban Outfitters, Inc.';
+Update Lesley Bland's phone number to 2155558800.
 
-6. DELETE FROM ContactEmployee WHERE ContactID = (SELECT ContactID FROM Contact WHERE FirstName = 'Dianne' AND LastName = 'Connor') 
+```sql
+UPDATE Employee 
+SET phone = '2155558800' 
+WHERE FirstName = 'Lesley' AND LastName = 'Bland';
+```
+
+## Question 5: Update Company Name
+
+Update Company_tbl to change 'Urban Outfitters, Inc.' to 'Urban Outfitters'.
+
+```sql
+UPDATE Company_tbl 
+SET CompanyName = 'Urban Outfitters' 
+WHERE CompanyName = 'Urban Outfitters, Inc.';
+```
+
+## Question 6: Delete Contact Event
+
+Remove Dianne Connor's contact event with Jack Lee from the ContactEmployee table.
+
+```sql
+DELETE FROM ContactEmployee 
+WHERE ContactID = (SELECT ContactID FROM Contact WHERE FirstName = 'Dianne' AND LastName = 'Connor') 
 AND EmployeeID = (SELECT EmployeeID FROM Employee WHERE FirstName = 'Jack' AND LastName = 'Lee');
+```
 
-7. SELECT FirstName, LastName FROM Employee
+## Question 7: Select Employee Names
 
-8. The % and _ are  operators used with the LIKE statement to search for patterns in text:
-    examples: 
-    -- Find names starting with 'J'
+Display the names of employees that have contacted Toll Brothers.
+
+```sql
+SELECT FirstName, LastName 
+FROM Employee;
+```
+
+## Question 8: LIKE Operator with % and _
+
+The `%` and `_` are wildcard operators used with the LIKE statement to search for patterns in text.
+
+**Examples:**
+
+### Find names starting with 'J'
+
+```sql
 SELECT * FROM Employee WHERE FirstName LIKE 'J%';
--- Results: Jack, Joanne, James, etc.
+```
 
--- Find names ending with 'e'
+**Results:** Jack, Joanne, James, etc.
+
+### Find names ending with 'e'
+
+```sql
 SELECT * FROM Contact WHERE LastName LIKE '%e';
--- Results: Dianne, Jake, James, etc.
+```
 
--- Find names containing 'a' anywhere
+**Results:** Dianne, Jake, James, etc.
+
+### Find names containing 'a' anywhere
+
+```sql
 SELECT * FROM Employee WHERE FirstName LIKE '%a%';
--- Results: James, Frank, Sarah, Jack, etc.
+```
+
+**Results:** James, Frank, Sarah, Jack, etc.
