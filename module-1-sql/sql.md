@@ -360,4 +360,43 @@ A subquery is a query within another query.
 ```sql
 SELECT MAX(salary) AS second_highest_salary FROM employee WHERE salary < (SELECT MAX(salary) FROM employee);
 ```
+
+## TCL : Transactional query langaue 
+1. commit:
+   commit will be used to save any data after delete 
+   **query**
+   ```
+   start transaction;
+   delete from users where where id=3;
+   commit;
+   ```
+
+2. rollback:
+   after deleting a data using commit, rollback allows you to bring it back
+   **query**
+   ```
+   start transaction;
+   select * from users where where id=3;
+   rollback;
+   ```
    
+   **note** rollback only supported in oracle, not in mysql
+
+
+## Normalisation i SQL
+   1. Normalisation is used to remove redundancy (duplicate) data format from tables
+   2. It's used to provide relationship between one table to another table 
+   3. It's used to create a normalised format of any table 
+
+## Types of normalisation 
+   1. 1-NF (First normalised form)
+   2. 2-NF
+   3. 3-NF
+   4. 4-NF 
+   5. 5-NF
+
+## Create 1-NF
+Basic information about a table with primary key
+| user_id (pk) | Email           | Age | Salary   | Department |
+|--------------|-----------------|-----|----------|------------|
+| 1            | paree@gmail.com | 19  | 1000000 | IT         |
