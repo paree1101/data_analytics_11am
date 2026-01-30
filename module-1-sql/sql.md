@@ -134,175 +134,230 @@ RENAME is used to change the name of a table.
 RENAME TABLE tbl_employee TO employee;
 ```
 
-### truncate command 
-Truncate is used to remove or delete all data from tables 
-**note:** After truncate, data cannot be rolled back
+### TRUNCATE Command
 
-```
-Truncate table tablename
-```
+Truncate is used to remove or delete all data from tables.
 
-### DROP 
-used to delete database and table structures
-```
-drop database databasename
+**Note:** After truncate, data cannot be rolled back.
+
+**Syntax:**
+
+```sql
+TRUNCATE TABLE tablename;
 ```
 
-## drop a table:
+### DROP Command
+
+DROP is used to delete database and table structures.
+
+**Syntax to drop a database:**
+
+```sql
+DROP DATABASE databasename;
 ```
-drop table tablename
+
+**Syntax to drop a table:**
+
+```sql
+DROP TABLE tablename;
 ```
 
-### DML (data manipulation language)
-DML is used to manioulate data; insert or delete or update data in a table
+## DML (Data Manipulation Language)
 
-1. insert data
-   ## single data insert
-   ```
-   insert into tablename (columnname) values('value')
-   ```
-   **query** 
-   insert into users (name, email, password)
-   values('viva', 'viva@gmail.com', 2345)
+DML is used to manipulate data; insert or delete or update data in a table.
 
-   ## multiple data insert
-   ```
-   insert into tablename (columnname) values('value1'), ('value2'), ('value3')
-   ```
+### 1. INSERT Data
 
-   **query**
-   insert into users (name, email, password)
-   values('jolyn', 'jolyn@gmail.com', 2345), ('hiya', 'hiya@gmail.com, 3422)
+#### Single Data Insert
 
-2. delete data
-   ## delete all data
-   ```
-   delete from users 
-   ```
-   ## delete particular data 
-   ```
-   delete from users where id=4
-   ```
+**Syntax:**
 
-   ## delete a rannge of data
-   ```
-   delete from users where id between 1 and 3
-   ```
+```sql
+INSERT INTO tablename (columnname) VALUES('value');
+```
 
-   ## delete multiple data in random order
+**Example:**
 
-   ```
-   delete from users where id in (3,4,8,9,13)
-   ```
+```sql
+INSERT INTO users (name, email, password)
+VALUES('viva', 'viva@gmail.com', 2345);
+```
 
-   3. update data
-   
-   ```
-   update users set name = 'preeti', email = 'preeti@gmail.com', password = '6565' where id=3
-   ```
+#### Multiple Data Insert
 
-   ## DQL (Data query language)
-   is used to fetch data or select data from tables 
+**Syntax:**
 
-   **select**
+```sql
+INSERT INTO tablename (columnname) VALUES('value1'), ('value2'), ('value3');
+```
 
-   **select all data**
+**Example:**
 
-   ```
-   select * from users
-   ```
+```sql
+INSERT INTO users (name, email, password)
+VALUES('jolyn', 'jolyn@gmail.com', 2345), ('hiya', 'hiya@gmail.com', 3422);
+```
 
-   **select particular column**
-   ```
-   select id, name from users
-   ```
+### 2. DELETE Data
 
-   **select particular with id**
-   ```
-   select * from users where id=1
-   ```
+#### Delete All Data
 
-   **select particular between data**
-   ```
-   select * from users where between 1 and 100
-   ```
-   
-   **select particular in operator data**
-   ```
-   select * from users where between id in(1,3)
-   ```
-   
-   **select particular data using limit**
-   ```
-   select * from users where between id limit 0,2
-   ```
+```sql
+DELETE FROM users;
+```
 
-   **select particular data in asceding or descending order**
-   ```
-   select * from users order by name ASC
-   or 
-   select * from users order by name ASC
-   or
-   select * from users order by name (by default comes in asceding order)
-   ```
+#### Delete Particular Data
 
-   **searching for data starting with a particular character**
-   ```
-   searching data starting with 'p' character
-   select * from users where name like 'p%'
+```sql
+DELETE FROM users WHERE id=4;
+```
 
-   searching data ending with 'e' character
-   select * from users where name like '%e'
+#### Delete a Range of Data
 
-   searching data ending or starting or anywhere in name with 'a' character
-   select * from users where name like '%a%'
-   ```
+```sql
+DELETE FROM users WHERE id BETWEEN 1 AND 3;
+```
 
-   **sql function**
-   1. Aggrigate function 
-      **query**
-      1. count
-      2. sum
-      3. max
-      4. avg
+#### Delete Multiple Data in Random Order
 
-   2. Scalar function
-      **query**
-      1. first (first is not supported in mysql, it's supported in oracle)
-      2. last (first is not supported in mysql, it's supported in oracle)
-      3. lcase
-      4. ucase
+```sql
+DELETE FROM users WHERE id IN (3, 4, 8, 9, 13);
+```
 
-   
-   ## Aggrigate function queries
+### 3. UPDATE Data
 
-   ```
-   select max(salary) as highest_salary from employee
+```sql
+UPDATE users SET name = 'preeti', email = 'preeti@gmail.com', password = '6565' WHERE id=3;
+```
 
-   select min(salary) as highest_salary from employee
+## DQL (Data Query Language)
 
-   select count(employee_id) as total_employees from employee
+DQL is used to fetch or select data from tables.
 
-   select sum(salary) as total_salary from employee
+### SELECT Statement
 
-   select avg(salary) as avg_salary from employee
-   ```
+#### Select All Data
 
-   ## Scalar functions
-   ```
-   select first(employee_name) from employee
+```sql
+SELECT * FROM users;
+```
 
-   select last(employee_name) from employee
+#### Select Particular Column
 
-   select ucase(employee_name) from employee
+```sql
+SELECT id, name FROM users;
+```
 
-   select lcase(employee_name) from employee
-   ```
+#### Select Particular Row with ID
 
-   **subquery in sql**
+```sql
+SELECT * FROM users WHERE id=1;
+```
 
-   subquery means query within another query 
-   ```
-   select max(salary) as second_highest_salary from employee where salary < (select max(salary) from employee)
-   ```
+#### Select Data in a Range
+
+```sql
+SELECT * FROM users WHERE id BETWEEN 1 AND 100;
+```
+
+#### Select Data Using IN Operator
+
+```sql
+SELECT * FROM users WHERE id IN (1, 3);
+```
+
+#### Select Data Using LIMIT
+
+```sql
+SELECT * FROM users LIMIT 0, 2;
+```
+
+#### Select Data in Ascending or Descending Order
+
+```sql
+SELECT * FROM users ORDER BY name ASC;
+```
+
+```sql
+SELECT * FROM users ORDER BY name DESC;
+```
+
+```sql
+SELECT * FROM users ORDER BY name;
+```
+
+Note: By default, data comes in ascending order.
+
+#### Searching for Data Starting with a Particular Character
+
+**Search data starting with 'p':**
+
+```sql
+SELECT * FROM users WHERE name LIKE 'p%';
+```
+
+**Search data ending with 'e':**
+
+```sql
+SELECT * FROM users WHERE name LIKE '%e';
+```
+
+**Search data containing 'a' anywhere:**
+
+```sql
+SELECT * FROM users WHERE name LIKE '%a%';
+```
+
+### SQL Functions
+
+#### 1. Aggregate Functions
+
+- COUNT
+- SUM
+- MAX
+- MIN
+- AVG
+
+#### 2. Scalar Functions
+
+- FIRST (supported in Oracle, not in MySQL)
+- LAST (supported in Oracle, not in MySQL)
+- LCASE
+- UCASE
+
+### Aggregate Function Queries
+
+```sql
+SELECT MAX(salary) AS highest_salary FROM employee;
+
+SELECT MIN(salary) AS lowest_salary FROM employee;
+
+SELECT COUNT(employee_id) AS total_employees FROM employee;
+
+SELECT SUM(salary) AS total_salary FROM employee;
+
+SELECT AVG(salary) AS avg_salary FROM employee;
+```
+
+### Scalar Function Queries
+
+```sql
+SELECT FIRST(employee_name) FROM employee;
+
+SELECT LAST(employee_name) FROM employee;
+
+SELECT UCASE(employee_name) FROM employee;
+
+SELECT LCASE(employee_name) FROM employee;
+```
+
+## Subquery in SQL
+
+A subquery is a query within another query.
+
+**Example:**
+
+```sql
+SELECT MAX(salary) AS second_highest_salary FROM employee WHERE salary < (SELECT MAX(salary) FROM employee);
+```
    
