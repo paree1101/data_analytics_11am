@@ -400,3 +400,81 @@ Basic information about a table with primary key
 | user_id (pk) | Email           | Age | Salary   | Department |
 |--------------|-----------------|-----|----------|------------|
 | 1            | paree@gmail.com | 19  | 1000000 | IT         |
+
+## Create 2-NF
+shows relation between one table and another using foregin key
+
+tbl_city
+| city_id (pk) | city_name       |
+|--------------|-----------------|
+| 1            |Rajkot           |
+| 2            |Dubai            |
+| 3            |San Dieago       |
+
+tbl_customer
+| user_id (pk) | Email           | Age | Salary   | city_id (fk) |
+|--------------|-----------------|-----|----------|--------------|
+| 1            | paree@gmail.com | 19  | 1000000  | 2            |
+| 2            | madhav@gmail.com | 41  | 5000000 | 3            |
+
+**how to add foreign key**
+CREATE table tbl_city
+(city_id int primary key AUTO_INCREMENT,
+ city_name varchar(255)
+ )
+
+CREATE table tbl_customers
+(customer_id int primary key AUTO_INCREMENT,
+   name varchar(255)
+   email varchar(255)
+   age INT
+   salary INT
+   city_id int REFERENCES tbl_city(city_id))
+
+**connect both using the relation tool found in table of customer**
+
+
+## Create 3-NF
+shows relation between one table and another or more than 1 table using foregin key
+
+tbl_country
+| country_id (pk) | country_name       |
+|--------------|-----------------------|
+| 1            |UAE                    |
+| 2            |USA                    |
+| 3            |India                  |
+
+tbl_state
+| state_id (pk) | state_name       |
+|--------------|-------------------|
+| 1            |California         |
+| 2            |Gujarat            |
+| 3            |Gulf               |
+
+tbl_city
+| city_id (pk) | city_name       |
+|--------------|-----------------|
+| 1            |Rajkot           |
+| 2            |Dubai            |
+| 3            |San Dieago       |
+
+tbl_customer
+| user_id (pk) | Email           | Age | Salary   | city_id (fk) | state_id (fk) | country_id (fk)|
+|--------------|-----------------|-----|----------|--------------|---------------|----------------|
+| 1            | paree@gmail.com | 19  | 1000000  | 2            |
+| 2            | madhav@gmail.com | 41  | 5000000 | 3            |
+
+
+
+**how to add foreign key**
+
+
+
+## Types of SQL Join 
+1. inner join
+2. join
+3. outer join 
+   a. left join
+   b. right join
+   c. full join 
+4. cross join 
