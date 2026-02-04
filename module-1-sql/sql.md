@@ -468,7 +468,7 @@ tbl_customer
 
 **how to add foreign key**
 
-
+must add relation by going into structure tab (change all to cascade)
 
 ## Types of SQL Join 
 1. inner join
@@ -478,3 +478,51 @@ tbl_customer
    b. right join
    c. full join 
 4. cross join 
+
+***inner join***
+in customer table you want to add city name from city table
+
+```
+select tbl_customers. * , city_name from tbl_customers inner join tbl_city on tbl_customers.city_id=tbl_city.city_id
+```
+want to add multiple table columns into customer table:
+```
+select tbl_customers. * , countryname, statename, cityname from tbl_customers inner join tbl_country on tbl_customers.country_id=tbl_country.country_id inner join tbl_state on tbl_customers.state_id=tbl_state.state_id inner join tbl_city on tbl_customers.city_id=tbl_city.city_id
+```
+
+can even simply use join:
+```
+select tbl_customers. * , countryname, statename, cityname from tbl_customers  join tbl_country on tbl_customers.country_id=tbl_country.country_id  join tbl_state on tbl_customers.state_id=tbl_state.state_id join tbl_city on tbl_customers.city_id=tbl_city.city_id
+```
+
+if don't want to include city_id and all then don't use *
+```
+select tbl_customers. customer_name, email, phone , countryname, statename, cityname from tbl_customers inner join tbl_country on tbl_customers.country_id=tbl_country.country_id inner join tbl_state on tbl_customers.state_id=tbl_state.state_id inner join tbl_city on tbl_customers.city_id=tbl_city.city_id
+```
+
+**left join**
+
+left join is used to join the first table of left rows to second table of left rows if data matches then join otherwise return null
+```
+select tbl_customers. * , countryname, statename, cityname from tbl_customers left join tbl_country on tbl_customers.country_id=tbl_country.country_id left join tbl_state on tbl_customers.state_id=tbl_state.state_id left join tbl_city on tbl_customers.city_id=tbl_city.city_id
+```
+
+
+**right join**
+
+right join is used to join the second table of left rows to first table of right rows if data matches then join otherwise return null
+
+```
+select tbl_customers. * , countryname, statename, cityname from tbl_customers right join tbl_country on tbl_customers.country_id=tbl_country.country_id right join tbl_state on tbl_customers.state_id=tbl_state.state_id right join tbl_city on tbl_customers.city_id=tbl_city.city_id
+```
+
+**full join**
+full join = left join + right join 
+full join is not supported by mySQL
+
+**cross join**
+cross join is used to join more than one table and return duplicate of data
+
+***unique key***
+
+ALTER table 'tbl_employee' ADD UNIQUE('email')
