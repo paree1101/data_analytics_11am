@@ -48,3 +48,6 @@
     30
 
 16. run python via script method using vscode (create .py file and run the code there itself)
+17. to stay in same line do end = " "
+18. to go to new line do "\n"
+
