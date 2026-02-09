@@ -13,3 +13,4 @@ print(a << 2) # Left shift
 print(a >> 2) # Right shift
 
 print(type(a))
+

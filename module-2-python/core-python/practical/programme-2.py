@@ -43,3 +43,4 @@ print(True and False)  # Output: False
 # 10) Exponentiation operator (**)
 print(2 ** 3)  # Output: 8
 # ** is used for exponentiation (power)
+
