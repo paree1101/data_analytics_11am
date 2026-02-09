@@ -11,3 +11,5 @@ print(a ^ b)  # Bitwise XOR
 print(~a)     # Bitwise NOT
 print(a << 2) # Left shift
 print(a >> 2) # Right shift
+
+print(type(a))
