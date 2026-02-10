@@ -45,4 +45,6 @@ age = 30
 formatted_string = f"My name is {name} and I am {age} years old."
 # Output: 'My name is Alice and I am 30 years old.' 
 
-
+number = int(input("Enter a number: "))
+power = pow(number, 2)
+print(f"The square of {number} is {power}.")    
