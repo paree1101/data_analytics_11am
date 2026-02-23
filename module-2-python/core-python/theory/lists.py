@@ -97,6 +97,9 @@ print(list3)  # Output: [1, 2, 3] (list3 is a clone of list1)
 list3[0] = 20  # Modifying list3 will not affect list1
 print(list1)  # Output: [1, 2, 3] (list1 is not modified because list3 is a clone of list1)
 print(list3)  # Output: [20, 2, 3] (list3 is modified)
+list3 = list1[:]  # Another way to clone a list using slicing
+print(list3)  # Output: [1, 2, 3] (list3 is a clone of list1)
+
 
 # use command: help(list)  
 # This will display the documentation for the list data type, 
