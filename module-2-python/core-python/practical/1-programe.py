@@ -14,3 +14,24 @@ print(a >> 2) # Right shift
 
 print(type(a))
 
+import turtle
+
+class Circle:
+    def __init__(self, radius, colour):
+        self.radius = radius
+        self.colour = colour
+
+    def draw(self):
+        t = turtle.Turtle()
+        t.color(self.colour)
+        t.begin_fill()
+        t.circle(self.radius)
+        t.end_fill()
+
+# Create object
+circle1 = Circle(50, "red")
+
+# Draw it
+circle1.draw()
+
+turtle.done()
